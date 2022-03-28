@@ -4,10 +4,10 @@ const product = mongoose.model(
   "products",
   mongoose.Schema(
     {
-      productName: String,
-      productDescription: String,
+      title: String,
+      content: String,
       productPrice: Number,
-      productImage: String
+      productImage: String,
     },
     { timestamps: true }
   )

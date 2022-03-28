@@ -13,8 +13,8 @@ exports.create = (req, res, next) => {
         req.file != undefined ? req.file.path.replace(/\\/g, "/") : "";
 
       var model = {
-        productName: req.body.productName,
-        productDescription: req.body.productDescription,
+        title: req.body.title,
+        content: req.body.content,
         productPrice: req.body.productPrice,
         productImage: path != "" ? url + "/" + path : "",
       };
@@ -35,7 +35,7 @@ exports.create = (req, res, next) => {
 // Retrieve all Products from the database.
 exports.findAll = (req, res, next) => {
   var model = {
-    productName: req.query.productName,
+    title: req.query.title,
   };
 
   productsServices.getProducts(model, (error, results) => {
@@ -79,8 +79,8 @@ exports.update = (req, res, next) => {
 
       var model = {
         productId: req.params.id,
-        productName: req.body.productName,
-        productDescription: req.body.productDescription,
+        title: req.body.title,
+        content: req.body.content,
         productPrice: req.body.productPrice,
         productImage: path != "" ? url + "/" + path : "",
       };

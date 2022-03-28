@@ -42,6 +42,6 @@ app.use(errors.errorHandler);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // listen for requests
-app.listen(process.env.port || 5000, function () {
+app.listen(process.env.port || 5000, "0.0.0.0", function () {
   console.log("Ready to Go!");
 });

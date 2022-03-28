@@ -27,7 +27,7 @@
         "summary": "Get all products",
         "parameters": [
           {
-            "name": "productName",
+            "name": "title",
             "in": "query",
             "required": false,
             "description": "Product Name",
@@ -48,14 +48,14 @@
         "summary": "Create Product API",
         "parameters": [
           {
-            "name": "productName",
+            "name": "title",
             "in": "formData",
             "description": "Product Name",
             "required": true,
             "type": "string"
           },
           {
-            "name": "productDescription",
+            "name": "content",
             "in": "formData",
             "description": "Product Description",
             "type": "string"
@@ -111,14 +111,14 @@
         "summary": "Update Product API",
         "parameters": [
           {
-            "name": "productName",
+            "name": "title",
             "in": "formData",
             "description": "Product Name",
             "required": true,
             "type": "string"
           },
           {
-            "name": "productDescription",
+            "name": "content",
             "in": "formData",
             "description": "Product Description",
             "type": "string"
@@ -162,16 +162,16 @@
   },
   "definitions": {
     "Product": {
-      "required": ["productName", "_id", "productPrice"],
+      "required": ["title", "_id", "productPrice"],
       "properties": {
         "_id": {
           "type": "integer",
           "uniqueItems": true
         },
-        "productName": {
+        "title": {
           "type": "string"
         },
-        "productDescription": {
+        "content": {
           "type": "string"
         },
         "productPrice": {

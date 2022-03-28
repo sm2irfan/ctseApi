@@ -1,7 +1,7 @@
 const { product } = require("../models/products.model");
 
 async function createProduct(params, callback) {
-  if (!params.productName) {
+  if (!params.title) {
     return callback(
       {
         message: "Product Name Required",
@@ -22,9 +22,9 @@ async function createProduct(params, callback) {
 }
 
 async function getProducts(params, callback) {
-  const productName = params.productName;
-  var condition = productName
-    ? { productName: { $regex: new RegExp(productName), $options: "i" } }
+  const title = params.title;
+  var condition = title
+    ? { title: { $regex: new RegExp(title), $options: "i" } }
     : {};
 
   product
@@ -57,7 +57,10 @@ async function updateProduct(params, callback) {
   product
     .findByIdAndUpdate(productId, params, { useFindAndModify: false })
     .then((response) => {
-      if (!response) callback(`Cannot update Tutorial with id=${productId}. Maybe Tutorial was not found!`);
+      if (!response)
+        callback(
+          `Cannot update Tutorial with id=${productId}. Maybe Tutorial was not found!`
+        );
       else callback(null, response);
     })
     .catch((error) => {
@@ -71,7 +74,10 @@ async function deleteProduct(params, callback) {
   product
     .findByIdAndRemove(productId)
     .then((response) => {
-      if (!response) callback(`Cannot delete Product with id=${productId}. Maybe Product was not found!`);
+      if (!response)
+        callback(
+          `Cannot delete Product with id=${productId}. Maybe Product was not found!`
+        );
       else callback(null, response);
     })
     .catch((error) => {
@@ -84,5 +90,5 @@ module.exports = {
   getProducts,
   getProductById,
   updateProduct,
-  deleteProduct
+  deleteProduct,
 };
